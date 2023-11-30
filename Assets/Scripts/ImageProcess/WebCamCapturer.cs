@@ -1,12 +1,13 @@
 ﻿using System.IO;
 using InputHandling;
+using JetBrains.Annotations;
 using UnityEngine;
 using UnityEngine.UI;
 using Utilities;
 
 namespace ImageProcess
 {   
-    public class WebCamCapturer : InputReceiver<string>
+    public class WebCamCapturer : InputReceiver<Texture2D>
     {   
         #region SerializeField
         
@@ -62,8 +63,8 @@ namespace ImageProcess
                 new Rect(0, 0, photo.width, photo.height), Vector2.zero);
             
             byte[] bytes = photo.EncodeToPNG();
-            UserInput = imageSavePath + "/LatestPhoto.png";
-            System.IO.File.WriteAllBytes(UserInput, bytes);
+            UserInput = photo;
+            System.IO.File.WriteAllBytes(imageSavePath + "/LatestPhoto.png", bytes);
         
             // Resume the camera
             _webCamTexture.Play();
