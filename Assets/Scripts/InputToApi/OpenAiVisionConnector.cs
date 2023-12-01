@@ -1,7 +1,5 @@
-﻿using System.Threading.Tasks;
-using ImageProcess;
+﻿using ImageProcess;
 using InputHandling;
-using OpenAI;
 using OpenAI.Chat;
 using UnityEngine;
 
@@ -17,13 +15,21 @@ namespace InputToApi
         private bool _hasText = false;
 
         private bool _hasImage = false;
-
+        
+        /// <summary>
+        /// used in order to update class that a text input was given, in order not to send empty input
+        /// to API.
+        /// </summary>
         public void OnEnteredText()
         {
             if (_hasText) return;
             _hasText = true;
         }
-
+        
+        /// <summary>
+        /// used in order to update class that an image input was given, in order not to send empty input
+        /// to API.
+        /// </summary>
         public void OnCapturedImage()
         {
             if (_hasImage) return;
@@ -38,6 +44,7 @@ namespace InputToApi
             Texture2D photo = webCamCapturer.UserInput;
 
             ChatResponse result = await OpenAiClientWrapper.Instance.SendTextAndImage(text, photo);
+            //ChatResponse result = await OpenAiClientWrapper.Instance.SendText(text);
 
             Debug.Log(result.ToString());
         }

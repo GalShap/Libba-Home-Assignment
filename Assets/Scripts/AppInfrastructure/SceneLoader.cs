@@ -6,7 +6,11 @@ using Utilities;
 namespace AppInfrastructure
 {
     public class SceneLoader : SingletonPersistent<SceneLoader>
-    {
+    {   
+        /// <summary>
+        /// Gets a scene name and loads it into game. 
+        /// </summary>
+        /// <param name="sceneName"></param>
         public void LoadScene(string sceneName)
         {
             try

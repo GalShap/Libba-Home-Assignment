@@ -4,7 +4,12 @@ using TMPro;
 using UnityEngine;
 
 namespace ImageProcess
-{
+{   
+    
+    /// <summary>
+    /// class is made to get a textual input from user, process it and make it available to
+    /// be passed forward. 
+    /// </summary>
     public class TextInputHandler : InputReceiver<string>
     {
         #region Serialized Fields
@@ -19,10 +24,14 @@ namespace ImageProcess
         
         #endregion
 
+        #region Mono Behaviour
         private void Start()
         {
             SetUpInput();
         }
+        #endregion
+
+        #region Public Methods
 
         public override void SetUpInput()
         {
@@ -34,5 +43,7 @@ namespace ImageProcess
             UserInput = textInputField.text;
             latestTextDisplay.text = postInputDisplayText + UserInput;
         }
+        
+        #endregion
     }
 }

@@ -7,6 +7,10 @@ using Utilities;
 
 namespace ImageProcess
 {   
+    /// <summary>
+    /// class is made to capture an image input from webcam, process it and make it available to
+    /// be passed forward. 
+    /// </summary>
     public class WebCamCapturer : InputReceiver<Texture2D>
     {   
         #region SerializeField
@@ -27,11 +31,15 @@ namespace ImageProcess
 
         #endregion
 
+        #region Mono Behaviour
+
         private void Start()
         {
-            SetUpInput();
+                    SetUpInput();
         }
 
+        #endregion
+        
         #region Public Methods
 
         public  override void SetUpInput()
