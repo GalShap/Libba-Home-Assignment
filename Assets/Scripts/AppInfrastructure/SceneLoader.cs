@@ -22,5 +22,13 @@ namespace AppInfrastructure
                 Debug.LogError(sceneLoadException);
             }
         }
+    
+        /// <summary>
+        /// quits the app.
+        /// </summary>
+        public void Quit()
+        {
+            Application.Quit();
+        }
     }
 }
