@@ -5,7 +5,7 @@ using Utilities;
 
 namespace AppInfrastructure
 {
-    public class SceneLoader : SingletonPersistent<SceneLoader>
+    public class SceneLoader : MonoBehaviour
     {   
         /// <summary>
         /// Gets a scene name and loads it into game. 
