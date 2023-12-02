@@ -1,7 +1,9 @@
-﻿using ImageProcess;
+﻿using System.Collections.Generic;
+using ImageProcess;
 using OpenAI.Chat;
 using UnityEngine;
 using UnityEngine.Events;
+using Utilities;
 
 namespace InputToApi
 {
@@ -55,9 +57,13 @@ namespace InputToApi
             string text = textInputHandler.GetCurInput();
             Texture2D photo = webCamCapturer.GetCurInput();
 
-            ChatResponse result = await OpenAiClientProvider.Instance.SendTextAndImage(text, photo);
-            //ChatResponse result = await OpenAiClientWrapper.Instance.SendText(text);
+            var contentList = new List<Content>()
+            {
+                text,
+                photo
+            };
             
+            ChatResponse result = await OpenAiClientProvider.Instance.SendContent(contentList, Constants.Vision);
             onGetResult.Invoke(result);
         }
         
