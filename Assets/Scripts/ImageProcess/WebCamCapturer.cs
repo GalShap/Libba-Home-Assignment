@@ -35,7 +35,7 @@ namespace ImageProcess
 
         private void Start()
         {
-                    SetUpInput();
+            SetUpInput();
         }
 
         #endregion
