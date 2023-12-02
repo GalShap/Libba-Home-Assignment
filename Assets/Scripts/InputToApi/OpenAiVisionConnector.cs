@@ -52,8 +52,8 @@ namespace InputToApi
         {
             if (!_hasImage || !_hasText) return;
 
-            string text = textInputHandler.UserInput;
-            Texture2D photo = webCamCapturer.UserInput;
+            string text = textInputHandler.GetCurInput();
+            Texture2D photo = webCamCapturer.GetCurInput();
 
             ChatResponse result = await OpenAiClientWrapper.Instance.SendTextAndImage(text, photo);
             //ChatResponse result = await OpenAiClientWrapper.Instance.SendText(text);

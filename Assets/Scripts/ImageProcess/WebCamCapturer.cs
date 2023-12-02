@@ -17,8 +17,6 @@ namespace ImageProcess
 
         [SerializeField] private Image webCamShotDisplay;
 
-        [SerializeField] private string imageSavePath;
-        
         #endregion
         
         #region Private fields
@@ -31,16 +29,17 @@ namespace ImageProcess
 
         #region Mono Behaviour
 
-        private void Start()
+        protected override void Start()
         {
-            SetUpInput();
+            base.Start();
+            UserInput = new ImageInput();
         }
 
         #endregion
         
         #region Public Methods
 
-        public  override void SetUpInput()
+        public override void SetUpInput()
         {   
             WebCamDevice[] devices = WebCamTexture.devices;
             if (devices.Length == Constants.Empty)
@@ -54,7 +53,8 @@ namespace ImageProcess
         public override void GetInputFromUser()
         {   
             _webCamTexture.Pause();
-
+            
+            // create a new texture 
             Texture2D photo = new Texture2D(_webCamTexture.width, _webCamTexture.height);
             photo.SetPixels(_webCamTexture.GetPixels());
             photo.Apply();
@@ -68,10 +68,8 @@ namespace ImageProcess
             webCamShotDisplay.sprite = Sprite.Create(photo, 
                 new Rect(0, 0, photo.width, photo.height), Vector2.zero);
             
-            byte[] bytes = photo.EncodeToPNG();
-            UserInput = photo;
-            System.IO.File.WriteAllBytes(imageSavePath + "/LatestPhoto.png", bytes);
-        
+            UserInput.Input = photo;
+           
             // Resume the camera
             _webCamTexture.Play();
         }

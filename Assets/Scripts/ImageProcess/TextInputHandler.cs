@@ -25,9 +25,10 @@ namespace ImageProcess
         #endregion
 
         #region Mono Behaviour
-        private void Start()
+        protected override void Start()
         {
-            SetUpInput();
+            base.Start();
+            UserInput = new TextInput();
         }
         #endregion
 
@@ -40,8 +41,8 @@ namespace ImageProcess
 
         public override void GetInputFromUser()
         {
-            UserInput = textInputField.text;
-            latestTextDisplay.text = postInputDisplayText + UserInput;
+            UserInput.Input = textInputField.text;
+            latestTextDisplay.text = postInputDisplayText + UserInput.Input;
         }
         
         #endregion
