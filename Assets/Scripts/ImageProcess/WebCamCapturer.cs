@@ -39,12 +39,14 @@ namespace ImageProcess
         
         #region Public Methods
 
-        public override void SetUpInput()
+        protected override void SetUpInput()
         {   
+            // check if a camera device is connected.
             WebCamDevice[] devices = WebCamTexture.devices;
             if (devices.Length == Constants.Empty)
                 Debug.LogWarning("No camera devices found, please connect a camera and restart scene");
-
+            
+            // set a new camera texture on screen.
             _webCamTexture = new WebCamTexture(1920,1080,30);
             webCamRenderer.material.mainTexture = _webCamTexture;
             _webCamTexture.Play();
@@ -54,17 +56,19 @@ namespace ImageProcess
         {   
             _webCamTexture.Pause();
             
-            // create a new texture 
+            // create a new texture based on the latest pixels from camera.
             Texture2D photo = new Texture2D(_webCamTexture.width, _webCamTexture.height);
             photo.SetPixels(_webCamTexture.GetPixels());
             photo.Apply();
 
             if (_isFirstPic)
             {
+                // make the image appear in screen if it's first snapshot. 
                 _isFirstPic = false;
                 webCamShotDisplay.color = Color.white;
             }
-
+            
+            // set the snapshot onto the image, to see latest image taken. 
             webCamShotDisplay.sprite = Sprite.Create(photo, 
                 new Rect(0, 0, photo.width, photo.height), Vector2.zero);
             

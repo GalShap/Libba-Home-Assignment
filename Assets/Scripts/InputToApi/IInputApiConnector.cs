@@ -2,9 +2,7 @@
 {
     public interface IInputApiConnector
     {   
-        /// <summary>
-        /// Sends the input type to chat gpt 4 using openAiAPI. 
-        /// </summary>
+        /// <summary> Sends the input type to an openAI model using API. </summary>
         public void SendInputToApi();
     }
 }

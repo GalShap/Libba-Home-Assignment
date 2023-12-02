@@ -34,13 +34,14 @@ namespace ImageProcess
 
         #region Public Methods
 
-        public override void SetUpInput()
-        {
+        protected override void SetUpInput()
+        {   
             latestTextDisplay.text = preInputDisplayText;
         }
 
         public override void GetInputFromUser()
-        {
+        {   
+            
             UserInput.Input = textInputField.text;
             latestTextDisplay.text = postInputDisplayText + UserInput.Input;
         }
