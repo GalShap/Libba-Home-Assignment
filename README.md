@@ -19,32 +19,28 @@ Project contains a simple UI for control and navigation.
 * Project uses the OpenAI Unity Plugin available [here](https://github.com/RageAgainstThePixel/com.openai.unity).  
   Make sure to follow the plugin's installation instructions.
 * OpenAI account with sufficient tokens needed, for generating a key and make requests.
+* A Webcam.
 
 
 ## Setup
 
 Follow these steps to set up the project on your local machine:
 
-1. **Clone the repository:**
+1. Clone the repository:
     ```bash
-    git clone https://github.com/your-username/your-repo.git
+    git clone https://github.com/GalShap/Libba-Home-Assignment.git
     ```
 
-2. **Open Unity:**
-    - Make sure you have Unity Hub installed. You can download it [here](https://unity3d.com/get-unity/download).
-    - Open Unity Hub and add the cloned project by clicking on the "Add" button and selecting the project folder.
+2. Open Unity Hub and add the cloned project.
+   
+3. Install given dependencies if needed. Instructions are provided in the OpenAI plugin repo. 
 
-3. **Open Main Scene:**
-    - Open the main scene of the project in Unity. This is typically the scene that represents the starting point of your application.
-
-4. **Build Settings:**
-    - Configure build settings based on your platform requirements.
-    - To build the project, go to `File > Build Settings` and add scenes as necessary.
-
-
-Your project is now set up and ready to run. Continue to the [Run](#run) section for instructions on how to run the project.
-
+4. Open Scene "Main" - Main scene of Project.  
 
 ## Run 
 
+You can run the project in editor mode or build and run it using exe:
 
+1. To run in editor mode, simply press "Play" when in main scene.
+2. In order to build simply SSet any necessary build settings, press "build" and 
+   then use the exe provided. 
